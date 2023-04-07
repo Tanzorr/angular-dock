@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooComponent } from './components/foo/foo.component';
 import { DirectiveForTemplateModule } from './directiva-for-template/directive-for-template.module';
+import { ContentProjectionsModule } from './content-prjections/content-projections.module';
+import { UnlessDirective } from './unless.directive';
+import { NestedForDirective } from './nested-for.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooComponent
+    FooComponent,
+    UnlessDirective,
+    NestedForDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DirectiveForTemplateModule
+    DirectiveForTemplateModule,
+    ContentProjectionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
