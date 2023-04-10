@@ -1,0 +1,17 @@
+<h3>Content projections component</h3>
+<ng-template #defaultTemplate let-p>
+  <b>{{p}} I am default template </b>
+</ng-template>
+
+<div *ngFor="let item of [1,2,3]">
+  <ng-template [ngTemplateOutlet]="templateRef || defaultTemplate"
+               [ngTemplateOutletContext]="{$implicit: item}"
+  ></ng-template>
+</div>
+
+<div *ngFor="let item of [4,5,6]; template: templateRef ">
+</div>
+
+<div *ngIf="true; then: templateRef"></div>
+
+<ng-content></ng-content>

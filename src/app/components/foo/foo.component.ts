@@ -1,4 +1,12 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  Input,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 import { AppComponent } from "../../app.component";
 import { delay, Observable } from "rxjs";
 
@@ -10,10 +18,7 @@ import { delay, Observable } from "rxjs";
 export class FooComponent {
   @Input()
   template?: TemplateRef<{ $implicit: number }>
-  temp$: Observable<TemplateRef<any>>
- // @ContentChild('ref') temp: TemplateRef<any>;
 
-  constructor( private _parent: AppComponent ) {
-     this.temp$ = this._parent.subject.asObservable().pipe(delay(0));
-  }
+
+
 }

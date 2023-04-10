@@ -1,27 +1,37 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appNestedFor]'
+  selector: '[appNgLoop]'
 })
-export class NestedForDirective {
-  @Input() set nestedForOf(nestedArrays: any[][]) {
-    // clear the container before rendering the new content
-    this.viewContainer.clear();
+export class NestedForDirective implements OnChanges {
+  @Input() appNgLoopOf: Array<any>;
 
-    // loop through the nested arrays and render the template for each element
-    nestedArrays.forEach((nestedArray: any[]) => {
-      nestedArray.forEach((item: any) => {
-        // create a new embedded view for the template
-        const embeddedView = this.templateRef.createEmbeddedView({ $implicit: item });
-        this.viewContainer.insert(embeddedView);
-      });
-    });
+  @Input() appNgLoopNestedTemplate: TemplateRef<any>;
+
+  constructor(private container: ViewContainerRef,
+              private template: TemplateRef<any>,
+              private element: ElementRef,
+              private renderer: Renderer2
+  ) {
   }
 
+  ngOnChanges() {
+    this.container.clear();
+    this._getArrayTemplate(this.appNgLoopOf, this.appNgLoopNestedTemplate);
 
-  constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
-  ) { }
+    this.renderer.setStyle(this.element.nativeElement.parentElement, 'display', 'grid');
+    this.renderer.setStyle(this.element.nativeElement.parentElement, 'grid-template-columns', `repeat(${this.appNgLoopOf[0].length}, 1fr)`);
+  }
 
+  public _getArrayTemplate(array: any[], template: TemplateRef<any>): void {
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        this.container.createEmbeddedView(template, {
+          $implicit: array[i][j],
+          row: i,
+          column: j
+        });
+      }
+    }
+  }
 }

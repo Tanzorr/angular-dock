@@ -3,38 +3,61 @@
     <h1>App component</h1>
   </div>
   <div class="row" >
-    <app-foo  [template]="ref">
-      <h3 class="header">Header</h3>
-      <p class="body">Body</p>
-      <footer class="footer">Footer</footer>
-    </app-foo>
+    <app-foo  [template]="ref"></app-foo>
+    <app-foo  [template]="ref"></app-foo>
 
     <ng-template  #ref let-elem>
-      <p>{{ elem }} I am from App 2222 component</p>
+      <p>{{ elem }} I am passed through input</p>
     </ng-template>
+
+    <app-content-projections>
+      <h3>App in content projection</h3>
+      <ng-template let-elem>
+        <p>{{ elem }} I am passed through content projection</p>
+      </ng-template>
+    </app-content-projections>
+    <app-content-projections>
+      <h3>App in content projection</h3>
+      <ng-template let-elem>
+        <p>{{ elem }} I am passed through content projection</p>
+      </ng-template>
+    </app-content-projections>
 
     <p>
       The condition is currently
-      <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+      <span [ngClass]="{ 'a-condition': !condition, 'b-condition': condition, 'unless': true }">
+        {{ condition }}
+      </span>.
       <button
         type="button"
+        class="btn btn-primary"
         (click)="condition = !condition"
         [ngClass] = "{ 'a': condition, 'b': !condition }" >
         Toggle condition to {{condition ? 'false' : 'true'}}
       </button>
     </p>
-    <p *appUnless="condition" class="unless a">
+    <p *appUnless="condition" class="unless a-condition">
       (A) This paragraph is displayed because the condition is false.
     </p>
 
-    <p *appUnless="!condition" class="unless b">
+    <p *appUnless="!condition" class="unless b-condition">
       (B) Although the condition is true,
       this paragraph is displayed because appUnless is set to false.
     </p>
+
     <h3>Nested Array Directive</h3>
-    <ng-container *appNestedFor="let item of nestedArrays">
-      {{ item }}
-    </ng-container>
+    <ng-template #nestedTemplate let-item let-row="row" let-column="column">
+      <span class="item">
+        {{ item }}
+        {{ row }}-row
+        {{ column }}-column
+      </span>
+    </ng-template>
+    <div class="nested-array-wrapper">
+      <div *appNgLoop="let nr of nestedArray; nestedTemplate: nestedTemplate">
+        {{ nr }}
+      </div>
+    </div>
   </div>
 </div>
 

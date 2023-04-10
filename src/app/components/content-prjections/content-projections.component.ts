@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-content-projections',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content-projections.component.scss']
 })
 export class ContentProjectionsComponent implements OnInit {
+
+  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
 
   constructor() { }
 

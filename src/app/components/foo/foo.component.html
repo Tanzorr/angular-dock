@@ -1,27 +1,8 @@
-
-<h1>Inner component</h1>
-<ng-template #ref let-i let-key="key2" let-number="foo">
-  <p>{{key}} I am template {{i}} ))) </p>
-</ng-template>
-
-<ng-container
-  *ngTemplateOutlet="temp$ | async;  context:{key:'my key property', key2: 234, $implicit: 'Hi iii'}"></ng-container>
-<ng-container *ngTemplateOutlet="ref; context:{foo: 123, $implicit: 'Hi'}"></ng-container>
-
-<hr/>
-
+<h2>Inner Foo component</h2>
 <ng-template #defaultTemplate let-p>
-  <p>{{p}} I am default template </p>
+  <b>{{p}} I am default template </b>
 </ng-template>
-
-
 
 <div *ngFor="let item of [1,2,3]">
   <ng-container *ngTemplateOutlet="template || defaultTemplate; context:{$implicit: item}"></ng-container>
 </div>
-
-<app-content-projections>
-  <h3>Content from Foo</h3>
-  <ng-container *ngTemplateOutlet="ref; context:{foo: 123, $implicit: 'Hi'}"></ng-container>
-  <ng-container *ngTemplateOutlet="template || defaultTemplate;"></ng-container>
-</app-content-projections>
