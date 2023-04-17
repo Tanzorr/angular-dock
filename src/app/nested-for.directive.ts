@@ -1,12 +1,22 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { GridLike } from './grid-like.interface';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { GRID_LIKE_TOKEN } from './grid-like.token';
 
 @Directive({
-  selector: '[appNgLoop]'
+  selector: '[appNestedFor]',
+  providers: [
+    { provide: GRID_LIKE_TOKEN, useExisting: NestedForDirective }
+  ]
 })
-export class NestedForDirective implements OnChanges {
-  @Input() appNgLoopOf: Array<any>;
+export class NestedForDirective implements OnChanges, GridLike {
+  private _columnsSubject = new BehaviorSubject<number | null>(null);
+  columns$: Observable<number | null> = this._columnsSubject.asObservable();
 
-  @Input() appNgLoopNestedTemplate: TemplateRef<any>;
+  @Input() appNestedForOf: number;
+  @Input() appNestedForWith: number;
+
+  @Input() appNestedForTemplate: TemplateRef<any>;
 
   constructor(private container: ViewContainerRef,
               private template: TemplateRef<any>,
@@ -17,17 +27,17 @@ export class NestedForDirective implements OnChanges {
 
   ngOnChanges() {
     this.container.clear();
-    this._getArrayTemplate(this.appNgLoopOf, this.appNgLoopNestedTemplate);
+    this._getArrayTemplate(this.appNestedForOf, this.appNestedForWith,this.appNestedForTemplate ?? this.template);
 
-    this.renderer.setStyle(this.element.nativeElement.parentElement, 'display', 'grid');
-    this.renderer.setStyle(this.element.nativeElement.parentElement, 'grid-template-columns', `repeat(${this.appNgLoopOf[0].length}, 1fr)`);
+    this._columnsSubject.next(this.appNestedForWith);
   }
 
-  public _getArrayTemplate(array: any[], template: TemplateRef<any>): void {
-    for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array[i].length; j++) {
+  public _getArrayTemplate(rows: number, columns: number, template: TemplateRef<unknown>): void {
+    let index = 0;
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < columns; j++) {
         this.container.createEmbeddedView(template, {
-          $implicit: array[i][j],
+          $implicit: index++,
           row: i,
           column: j
         });

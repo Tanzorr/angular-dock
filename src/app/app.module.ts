@@ -8,19 +8,25 @@ import { DirectiveForTemplateModule } from './components/directiva-for-template/
 import { ContentProjectionsModule } from './components/content-prjections/content-projections.module';
 import { UnlessDirective } from './unless.directive';
 import { NestedForDirective } from './nested-for.directive';
+import { LetDirective } from './let/let.directive';
+import { MatrixDirective } from './matrix.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooComponent,
     UnlessDirective,
-    NestedForDirective
+    NestedForDirective,
+    LetDirective,
+    MatrixDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DirectiveForTemplateModule,
-    ContentProjectionsModule
+    ContentProjectionsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
