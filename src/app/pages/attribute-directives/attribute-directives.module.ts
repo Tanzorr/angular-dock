@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AttributeDirectiveComponent } from './attribute-directive.component';
+import { AttributeDirectivesComponent } from './attribute-directives.component';
 import { FooModule } from '../../components/foo/foo.module';
 import { ContentProjectionsModule } from '../../components/content-prjections/content-projections.module';
 import { AppModule } from '../../app.module';
@@ -8,12 +8,10 @@ import { ForTemplateModule } from '../../components/for-template/for-template.mo
 import { AttributeDirectiveRoutingModule } from './attribute-directive-routing.module';
 
 
-
-
 // @ts-ignore
 @NgModule({
   declarations: [
-    AttributeDirectiveComponent,
+    AttributeDirectivesComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +20,5 @@ import { AttributeDirectiveRoutingModule } from './attribute-directive-routing.m
     AttributeDirectiveRoutingModule,
     ForTemplateModule
   ]
-
 })
-export class AttributeDirectionless { }
+export class AttributeDirectives { }

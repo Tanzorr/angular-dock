@@ -2,11 +2,11 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-structure-directive',
-  templateUrl: './structure-directive.component.html',
-  styleUrls: ['./structure-directive.component.scss']
+  selector: 'app-structure-directives',
+  templateUrl: './structure-directives.component.html',
+  styleUrls: ['./structure-directives.component.scss']
 })
-export class StructureDirectiveComponent {
+export class StructureDirectivesComponent {
 
   condition = false;
 

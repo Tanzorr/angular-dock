@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StructureDirectiveComponent } from './pages/structure-direcive/structure-directive.component';
+import { StructureDirectivesComponent } from './pages/structure-directives/structure-directives.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'attribute-directive',
-      loadChildren: () => import('./pages/attribute-directive/attribute-directive.module').then(m => m.AttributeDirectionless)
-    } ]
-  } ];
+      path: 'attribute-directives',
+      loadChildren: () => import('./pages/attribute-directives/attribute-directives.module').then(m => m.AttributeDirectives)
+    },
+      {
+        path: 'structure-directive',
+        loadChildren: () => import('./pages/structure-directives/structure-directives.module').then(m => m.StructureDirectivesModule)
+      }
+    ]
+  }
+];
 
-// { path: 'structure-directive', component: StructureDirectiveComponent }
-//];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

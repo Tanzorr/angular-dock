@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AttributeDirectiveComponent } from './attribute-directive.component';
+import { AttributeDirectivesComponent } from './attribute-directives.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AttributeDirectiveComponent,
+    component: AttributeDirectivesComponent,
   }
   ];
 
