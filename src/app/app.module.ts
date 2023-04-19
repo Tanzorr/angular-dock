@@ -14,11 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UnlessDirective,
-    NestedForDirective,
-    LetDirective,
-    MatrixDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     ContentProjectionsModule,
     FormsModule
   ],
-  providers: [],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}

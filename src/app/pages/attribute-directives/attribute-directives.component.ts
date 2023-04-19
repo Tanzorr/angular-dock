@@ -7,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AttributeDirectivesComponent {
+  condition = false;
+  title = 'NgContent';
 }

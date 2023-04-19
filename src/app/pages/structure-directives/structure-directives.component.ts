@@ -1,12 +1,21 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-structure-directives',
   templateUrl: './structure-directives.component.html',
-  styleUrls: ['./structure-directives.component.scss']
+  styleUrls: ['./structure-directives.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StructureDirectivesComponent {
+export class StructureDirectivesComponent implements AfterViewInit {
 
   condition = false;
 
