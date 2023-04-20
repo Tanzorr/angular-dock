@@ -1,0 +1,14 @@
+<h1>Carousel</h1>
+<div class="row" *ngFor="let item of items">
+  <img appCarousel #carousel="carousel" alt="">
+  <button (click)="carousel.prev()">prev</button>
+  <button (click)="carousel.next()">next</button>
+  <div class="row">
+    <input type="number" name="" id="" [appIndexControl]="carousel">
+  </div>
+</div>
+<div class="row">
+  <div class="alert" #alert *ngFor="let alert of items">
+    Alert content
+  </div>
+</div>

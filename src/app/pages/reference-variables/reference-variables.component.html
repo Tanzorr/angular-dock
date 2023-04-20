@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="elements col-lg-6">
+      <h2 #title>Title</h2>
+      <img src="" alt="" #image class="image">
+      <input #input placeholder="Title"/>
+      <textarea #textarea placeholder="content"></textarea>
+      <p #text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid animi cum debitis dolore
+        ducimus ea hic in inventore ipsa, iste laudantium minima officiis rem repellendus repudiandae tempora ullam,
+        ut.</p>
+      <div>
+        <h3>Content</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae delectus maxime minima sed sit
+        voluptatibus voluptatum. Amet eligendi expedita pariatur?
+        Ab doloribus harum id nulla odit placeat, ratione tempora voluptatem!
+      </div>
+    </div>
+    <div class="elements-property col-lg-6">
+      <h2>Elements Value</h2>
+      <div class="row">
+        <div class="props-container">
+          <h3>Title</h3>
+          <ul class="elements-property-lists">
+            <li><b>Text </b> {{title.innerText}}</li>
+            <li><b>Background </b> {{title.style.backgroundColor}}</li>
+          </ul>
+        </div>
+        <div class="props-container">
+          <h3>Img</h3>
+          <ul class="elements-property-lists">
+            <li><b>Src </b> {{image.src}}</li>
+          </ul>
+        </div>
+        <div class="props-container">
+          <h3>Input</h3>
+          <ul>
+            <li><b>Input value </b>{{input.value}}</li>
+            <li><b>Input background </b>{{input.style.backgroundColor}}</li>
+          </ul>
+        </div>
+        <div class="props-container">
+          <h3>Textarea</h3>
+          <ul>
+            <li><b>Textarea value</b> {{textarea.value}}</li>
+            <li><b>Textarea background</b> {{textarea.style.backgroundColor}}</li>
+          </ul>
+        </div>
+        <div class="props-container">
+          <h3>Text</h3>
+          <ul class="elements-property-lists">
+            <li><b>Text value</b> {{text.innerText}}</li>
+            <li><b>Text background</b> {{text.style.backgroundColor}}</li>
+          </ul>
+        </div>
+        <div class="props-container">
+          <h3>Content</h3>
+          <ul class="elements-property-lists">
+<!--            <li><b>Content instance</b> {{ getInstanceOf(content) }}</li>-->
+<!--            <button (click)="content.onChangesTextSize()">Chang Size</button>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h1>Template reference</h1>
+  </div>
+  <div class="row controls">
+    <button class="btn btn-primary" (click)="onAddText()">add</button>
+    <button class="btn btn-success" (click)="onChangeBackground()">change</button>
+    <button class="btn btn-dangers" (click)="onRemoveValue()">delete</button>
+  </div>
+</div>
