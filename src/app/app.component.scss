@@ -1,1 +1,13 @@
+:host{
+  display: block;
+  background-color: lightgreen;
+}
 
+.app-content{
+  background-color: lightgrey;
+  min-height: 100vh;
+}
+
+.active{
+  background-color: lightgreen;
+}

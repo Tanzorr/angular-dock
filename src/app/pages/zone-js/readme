@@ -1,0 +1,27 @@
+1 Zone.js
+Повідомляю про всі асінк операціі.
+Ng-zone обгортка посереднк.
+
+const window = {
+ onclick: function(){
+ console.log('user clicked');
+ }
+}
+
+const originalOnclick = window.onclick
+let counter = 0;
+
+window.onclick = function () {
+ originalOnclick()
+ counter++;
+}
+
+let array = [];
+array.push(1);
+array = [...array, 1];
+
+detach - не перевіряеться
+reatach - повертае
+
+runAutsideAngualar - для частих евентів
+

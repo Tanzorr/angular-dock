@@ -1,16 +1,19 @@
-<div class="container" xmlns="http://www.w3.org/1999/html">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">WebSiteName</a>
+<div class="container app-content" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a routerLink="reference-variables" routerLinkActive="active">Reference variable</a></li>
+          <li><a routerLink="carousel-directive" routerLinkActive="active">Carousel Directive</a></li>
+          <li><a routerLink="attribute-directives" routerLinkActive="active">Attribute directive</a></li>
+          <li><a routerLink="structure-directive" routerLinkActive="active">Structure directive</a></li>
+          <li><a routerLink="zone-js" routerLinkActive="active">Zone js</a></li>
+        </ul>
       </div>
-      <ul class="nav navbar-nav">
-        <li><a routerLink="attribute-directives">Attribute directive</a></li>
-        <li><a routerLink="structure-directive">Structure directive</a></li>
-        <li><a routerLink="reference-variables">Reference variable</a></li>
-        <li><a routerLink="carousel-directive">Carousel Directive</a></li>
-      </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
   <router-outlet></router-outlet>
 </div>

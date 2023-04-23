@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 export enum BackgroundColorEnum  {
   RED = 'red',
@@ -20,7 +20,6 @@ export class ReferenceVariablesComponent {
   @ViewChild('input') input: ElementRef | undefined;
   @ViewChild('title') title: ElementRef | undefined;
   @ViewChild('image') image: ElementRef | undefined;
-
 
   onRemoveValue(): void {
     // @ts-ignore

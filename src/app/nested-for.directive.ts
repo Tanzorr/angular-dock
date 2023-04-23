@@ -20,8 +20,6 @@ export class NestedForDirective implements OnChanges, GridLike {
 
   constructor(private container: ViewContainerRef,
               private template: TemplateRef<any>,
-              private element: ElementRef,
-              private renderer: Renderer2
   ) {
   }
 

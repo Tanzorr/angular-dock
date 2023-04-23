@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'carousel-directive',
         loadChildren: () => import('./pages/carousel-directive/carousel-directive.module').then(m => m.CarouselDirectiveModule)
+      },
+      {
+        path: 'zone-js',
+        loadChildren: () => import('./pages/zone-js/zone-js.module').then(m => m.ZoneJsModule)
       }
     ]
   }
