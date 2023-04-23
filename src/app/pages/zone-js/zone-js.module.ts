@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ZoneJsComponent } from './zone-js.component';
 import { ZoneJsRoutingModule } from './zone-js-routing.module';
+import { ForNgZoneModule } from '../../libs/for-ng-zone/for-ng-zone.module';
 
 
 
@@ -11,7 +12,8 @@ import { ZoneJsRoutingModule } from './zone-js-routing.module';
   ],
   imports: [
     CommonModule,
-    ZoneJsRoutingModule
+    ZoneJsRoutingModule,
+    ForNgZoneModule
   ]
 })
 export class ZoneJsModule { }
