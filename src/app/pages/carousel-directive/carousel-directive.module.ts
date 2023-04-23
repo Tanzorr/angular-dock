@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselDirectiveComponent } from './carousel-directive.component';
 import { CarouselDirectiveRoutingModule } from './carousel-directive-routing.module';
 import { CarouselModule } from '../../libs/carousel/carousel.module';
-import { IncexControlModule } from '../../libs/incex-control/incex-control.module';
+import { IncexControlModule } from '../../libs/index-control/incex-control.module';
 
 
 @NgModule({

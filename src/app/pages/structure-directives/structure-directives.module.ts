@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { StructureDirectivesComponent } from './structure-directives.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StructureDirectivesRoutingModule } from './structure-directives-routing.module';
-import { AppModule } from '../../app.module';
 import { MatrixDirective } from '../../matrix.directive';
 import { NestedForDirective } from '../../nested-for.directive';
+import { LetStructureDirectiveModule } from '../../libs/let-structure-directive/let-structure-directive.module';
 
 
 @NgModule({
@@ -19,6 +19,7 @@ import { NestedForDirective } from '../../nested-for.directive';
     ReactiveFormsModule,
     FormsModule,
     StructureDirectivesRoutingModule,
+    LetStructureDirectiveModule
   ]
 })
 export class StructureDirectivesModule { }
