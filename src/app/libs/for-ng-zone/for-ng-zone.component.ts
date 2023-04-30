@@ -1,30 +1,39 @@
-import { ChangeDetectionStrategy, Component, NgZone } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-for-ng-zone',
   templateUrl: './for-ng-zone.component.html',
-  styleUrls: ['./for-ng-zone.component.scss']
+  styleUrls: ['./for-ng-zone.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ForNgZoneComponent  {
+export class ForNgZoneComponent implements OnInit{
+  number = 0;
 
-  constructor(private ngZone: NgZone) { }
-  runOutsideZone() {
-    console.log('runOutsideZone() called outside Angular zone.');
-    setTimeout(() => {
-      console.log('setTimeout() executed outside Angular zone.');
-    }, 0);
+  constructor(private _zone: NgZone,
+              private _cdr: ChangeDetectorRef
+              ) {
   }
 
-  runInsideZone() {
-    console.log('runInsideZone() called inside Angular zone.');
-    this.ngZone.run(() => {
-      console.log('ngZone.run() executed inside Angular zone.');
-      setTimeout(() => {
-        console.log('setTimeout() executed inside Angular zone.');
-      }, 0);
-    });
+  ngOnInit(): void {
+    let counter = 0;
+
+    this._zone.runOutsideAngular(() => {
+      setInterval(() => {
+        counter++;
+        this.number = Math.random();
+        console.log('counter', counter);
+        if(counter > 3) {
+          counter = 0;
+          this._zone.run(() => {
+            console.log('run');
+           // this.number = Math.random();
+            this._cdr.markForCheck();
+          })
+        }
+        this.number = Math.random();
+      }, 500);
+    })
   }
-
-
-
 }
+
+

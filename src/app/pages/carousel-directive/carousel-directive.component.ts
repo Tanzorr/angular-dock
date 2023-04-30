@@ -28,5 +28,6 @@ export class CarouselDirectiveComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
+    console.log('carousel', this.carousel);
   }
 }
