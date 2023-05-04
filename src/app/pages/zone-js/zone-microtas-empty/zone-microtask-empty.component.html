@@ -1,4 +1,8 @@
 <h3>All microtask empty</h3>
+<h4>{{ message }}</h4>
+<ul>
+  <li *ngFor="let item of items$ | async ">{{ item.title }}</li>
+</ul>
 
-
+<button class="btn btn-success" (click)="onClick()">Run List</button>
 

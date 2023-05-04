@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DirectiveForTemplateModule } from './libs/directiva-for-template/directive-for-template.module';
 import { ContentProjectionsModule } from './libs/content-prjections/content-projections.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     DirectiveForTemplateModule,
     ContentProjectionsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   bootstrap: [ AppComponent ]
 })
