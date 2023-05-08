@@ -1,4 +1,7 @@
 <h3>Zone-run works!</h3>
-<h4 class="round-count"></h4>
-<div class="rotate-elem" #rotateElement></div>
-<button (click)="onClick()" class="btn btn-success">Click me</button>
+<h4 class="round-count">{{ iteration }}</h4>
+<div class="row animation-wrapper content-left">
+  <div class="rotate-elem" #rotateElement></div>
+  <button (click)="onClick()" class="btn btn-success">Click me</button>
+</div>
+

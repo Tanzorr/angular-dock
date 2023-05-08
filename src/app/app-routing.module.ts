@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: '',
     children: [ {
       path: 'attribute-directives',
-      loadChildren: () => import('./pages/attribute-directives/attribute-directives.module').then(m => m.AttributeDirectives)
+      loadChildren: () => import('./pages/attribute-directives/attribute-directives.module').then(m => m.AttributeDirectives),
+      pathMatch: 'full'
     },
       {
         path: 'structure-directive',
@@ -23,11 +25,14 @@ const routes: Routes = [
       {
         path: 'zone-js',
         loadChildren: () => import('./pages/zone-js/zone-js.module').then(m => m.ZoneJsModule)
+      },
+      {
+        path: 'event-loop',
+        loadChildren: () => import('./pages/event-loop/event-loop.module').then(m => m.EventLoopModule)
       }
-    ]
+    ],
   }
 ];
-
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

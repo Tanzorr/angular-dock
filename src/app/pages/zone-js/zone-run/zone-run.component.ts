@@ -12,13 +12,13 @@ import {
 @Component({
   selector: 'app-zone-run',
   templateUrl: './zone-run.component.html',
-  styleUrls: ['./zone-run.component.scss'],
+  styleUrls: [ './zone-run.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ZoneRunComponent implements OnInit {
   clicked = false;
-
   setInterval: any;
+  iteration = 0;
 
   @ViewChild('rotateElement') rotatedElem: ElementRef;
 
@@ -29,14 +29,7 @@ export class ZoneRunComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.clicked) {
-      clearInterval(this.setInterval);
-      this.clicked = !this.clicked;
 
-    } else {
-      this._rotateElement(this.rotatedElem);
-      this.clicked = !this.clicked;
-    }
   }
 
   onClick() {
@@ -54,19 +47,18 @@ export class ZoneRunComponent implements OnInit {
     }
 
     let counter = 0;
-    let iteration = 0;
 
     this._ngZone.runOutsideAngular(() => {
       this.setInterval = setInterval(() => {
         counter++;
         this.clicked = !this.clicked;
-        element.nativeElement.style.transform = `rotate(${counter}deg)`;
+        element.nativeElement.style.transform = `rotate(${ counter }deg)`;
 
         if (counter > 360) {
           counter = 0;
           this._ngZone.run(() => {
-            iteration++;
-            this._elementRef.nativeElement.querySelector('h4').innerText = `Iteration: ${iteration}`;
+            this.iteration++;
+            this._cdr.markForCheck();
           })
         }
       }, 10);

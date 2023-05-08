@@ -26,5 +26,7 @@ export class ZoneMicrotaskEmptyComponent {
       this.message = 'Microtasks are empty, fetching data...';
     });
   }
-
 }
+
+// TODO Show difference between onMicrotaskEmpty and onStable with visualization
+// underused eventLoop with visualization
