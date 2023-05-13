@@ -1,6 +1,47 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
+interface navItem {
+  path: string;
+  label: string;
+}
+
+const navs = [
+  {
+    path: '/carousel-directive',
+    label: 'Carousel Directive'
+  },
+  {
+    path: '/reference-variables',
+    label: 'Reference Variables'
+  },
+  {
+    path: '/structure-directive',
+    label: 'Structure Directive'
+  },
+  {
+    path: '/attribute-directives',
+    label: 'Attribute Directives'
+  },
+  {
+    path: '/ng-content',
+    label: 'NgContent'
+  },
+  {
+    path: '/change-detection-strategies',
+    label: 'Change Detection Strategies'
+  },
+  {
+    path: '/zone-js',
+    label: 'Zone.js'
+  },
+  {
+    path: '/event-loop',
+    label: 'Event Loop'
+  },
+]
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +58,7 @@ export class AppComponent implements AfterViewInit {
     [ 7, 8, 9 ]
   ];
   greeting = 'Hello, world!';
+  navs: navItem[] = navs;
 
   subject = new Subject<TemplateRef<any>>()
   @ViewChild('ref') ref: TemplateRef<any>
@@ -31,16 +73,3 @@ export class AppComponent implements AfterViewInit {
   }
 
 }
-
-//Inputs rows, columns, template
-// <ng-template twoDimensionalFor
-// [twoDimensionalForRows]="rows"
-// [twoDimensionalForColumns]="columns"
-// [twoDimensionalForTemplate]="template"
-// let-rowIndex="rowIndex"
-// let-columnIndex="columnIndex"
-// >
-// {{ rowIndex - columnIndex}}
-
-// </ng-template>
-//recive simple array and use grid for create matrix

@@ -29,6 +29,10 @@ const routes: Routes = [
       {
         path: 'event-loop',
         loadChildren: () => import('./pages/event-loop/event-loop.module').then(m => m.EventLoopModule)
+      },
+      {
+        path: 'change-detection-strategies',
+        loadChildren: () => import('./pages/change-detection-strategies/change-detection-strategies.module').then(m => m.ChangeDetectionStrategiesModule)
       }
     ],
   }

@@ -6,12 +6,7 @@
           <a class="navbar-brand" href="#">WebSiteName</a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a routerLink="reference-variables" routerLinkActive="active">Reference variable</a></li>
-          <li><a routerLink="carousel-directive" routerLinkActive="active">Carousel Directive</a></li>
-          <li><a routerLink="attribute-directives" routerLinkActive="active">Attribute directive</a></li>
-          <li><a routerLink="structure-directive" routerLinkActive="active">Structure directive</a></li>
-          <li><a routerLink="zone-js" routerLinkActive="active">Zone js</a></li>
-          <li><a routerLink="event-loop" routerLinkActive="active">Event Loop</a></li>
+          <li *ngFor="let nav of navs"><a [routerLink]="nav.path" routerLinkActive="active">{{ nav.label }}</a></li>
         </ul>
       </div>
     </nav>

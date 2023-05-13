@@ -1,4 +1,18 @@
-<h1>event-loop works!</h1>
+<h1>Event-loop!</h1>
 
+<div class="row">
+  <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--dhjH4Wt---/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://devtolydiahallie.s3-us-west-1.amazonaws.com/gif14.1.gif" alt="">
+</div>
 <button class="btn btn-success" (click)="onClick()">Run Example</button>
-<div *ngFor="let message of messages">{{ message }}</div>
+
+<div class="message-container">
+  <div *ngFor="let message of messages">{{ message }}</div>
+<!--  <div class="syncron" *ngFor="let message of synchronousTasks">{{ message }}</div>-->
+<!--  <div class="macro-task" *ngFor="let message of macroTasks">{{ message }}</div>-->
+<!--  <div class="micro-task" *ngFor="let message of microTasks">{{ message }}</div>-->
+</div>
+
+
+<div class="browser-render">
+  <img src="https://beomy.github.io/assets/img/posts/browser/webkit_rendering_engine_process.png" alt="">
+</div>
