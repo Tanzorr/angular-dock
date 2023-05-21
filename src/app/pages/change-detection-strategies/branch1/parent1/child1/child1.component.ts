@@ -12,4 +12,8 @@ export class Child1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  triggerChangeDetection() {
+    return Math.random()*100;
+  }
+
 }

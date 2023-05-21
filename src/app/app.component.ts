@@ -8,6 +8,10 @@ interface navItem {
 
 const navs = [
   {
+    path: '/attribute-directives',
+    label: 'Attribute Directives'
+  },
+  {
     path: '/carousel-directive',
     label: 'Carousel Directive'
   },
@@ -18,10 +22,6 @@ const navs = [
   {
     path: '/structure-directive',
     label: 'Structure Directive'
-  },
-  {
-    path: '/attribute-directives',
-    label: 'Attribute Directives'
   },
   {
     path: '/ng-content',

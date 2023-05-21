@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-parent1',
   templateUrl: './parent1.component.html',
   styleUrls: ['./parent1.component.scss']
 })
-export class Parent1Component implements OnInit {
+export class Parent1Component  {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  triggerChangeDetection() {
+    return Math.random()*100;
   }
-
 }

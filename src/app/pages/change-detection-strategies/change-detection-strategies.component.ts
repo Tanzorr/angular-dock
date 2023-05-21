@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-change-detection-strategey',

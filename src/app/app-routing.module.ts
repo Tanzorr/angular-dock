@@ -33,6 +33,11 @@ const routes: Routes = [
       {
         path: 'change-detection-strategies',
         loadChildren: () => import('./pages/change-detection-strategies/change-detection-strategies.module').then(m => m.ChangeDetectionStrategiesModule)
+      },
+      {
+        path: '',
+        redirectTo: 'attribute-directives',
+        pathMatch: 'full'
       }
     ],
   }

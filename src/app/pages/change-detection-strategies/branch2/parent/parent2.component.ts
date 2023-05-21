@@ -12,4 +12,7 @@ export class Parent2Component implements OnInit {
   ngOnInit(): void {
   }
 
+  triggerChangeDetection() {
+    return Math.random()*100;
+  }
 }

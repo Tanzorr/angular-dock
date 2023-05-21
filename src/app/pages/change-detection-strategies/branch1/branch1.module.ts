@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Branch1Component } from './branch1.component';
-import { Parnt2Module } from '../branch2/parnt/parnt2.module';
+import { Parnt2Module } from '../branch2/parent/parnt2.module';
 import { Parent1Module } from './parent1/parent1.module';
 
 
