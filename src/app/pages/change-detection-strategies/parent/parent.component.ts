@@ -9,7 +9,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 export class ParentComponent implements OnInit {
   parentFood: string[] =['Pizza', 'Pasta', 'Sandwich']
   singleFood: string = 'Pizza';
-  constructor(private _cdr: ChangeDetectorRef) { }
+  constructor(private _cdr: ChangeDetectorRef) {
+    // this._cdr.detach(); the same as onPush
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -17,7 +19,7 @@ export class ParentComponent implements OnInit {
       this.singleFood = 'Burger';
       //this._cdr.markForCheck();
       console.log('Parent triggered')
-     // this._cdr.detectChanges();
+      this._cdr.detectChanges();
     }, 2000);
   }
 

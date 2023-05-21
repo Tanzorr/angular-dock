@@ -4,6 +4,8 @@ import { ChangeDetectionStrategiesComponent } from './change-detection-strategie
 import { ChangeDetectionStrategiesRoutingModule } from './change-detection-strategies-routing.module';
 import { ParentModule } from './parent/parent.module';
 import { FormsModule } from '@angular/forms';
+import { Branch1Module } from './branch1/branch1.module';
+import { Branch2Module } from './branch2/branch2.module';
 
 
 
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ChangeDetectionStrategiesRoutingModule,
     ParentModule,
-    FormsModule
+    FormsModule,
+    Branch1Module,
+    Branch2Module
   ]
 })
 export class ChangeDetectionStrategiesModule { }
