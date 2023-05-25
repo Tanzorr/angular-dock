@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-child3',
   templateUrl: './child3.component.html',
-  styleUrls: ['./child3.component.scss']
+  styleUrls: [ './child3.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Child3Component implements OnInit {
 
-  constructor() { }
+  constructor(private _cdr: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this._cdr.markForCheck();
+    }, 5000);
   }
 
   triggerChangeDetection() {
-    return Math.random()*100;
+    return Math.random() * 100;
   }
 
 }

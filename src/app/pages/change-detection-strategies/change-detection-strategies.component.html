@@ -2,7 +2,7 @@
 
 <input type="text" [(ngModel)]="food">
 <app-parent></app-parent>
-
-<app-branch1></app-branch1>
-<app-branch2></app-branch2>
+<h1>{{ triggerChangeDetection() }}</h1>
+<app-branch1 appRandomBackground #randomBackground ="appRandomBackground"></app-branch1>
+<app-branch2 appRandomBackground></app-branch2>
 

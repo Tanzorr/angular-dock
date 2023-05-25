@@ -17,4 +17,7 @@ export class Branch2Component implements OnInit {
     return Math.random()*100;
   }
 
+  displayChanges() {
+
+  }
 }

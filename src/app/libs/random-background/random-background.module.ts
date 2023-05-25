@@ -8,6 +8,9 @@ import { RandomBackgroundDirective } from './random-background.directive';
   declarations: [
     RandomBackgroundDirective
   ],
+  exports: [
+    RandomBackgroundDirective
+  ],
   imports: [
     CommonModule
   ]

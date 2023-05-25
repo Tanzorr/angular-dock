@@ -6,6 +6,7 @@ import { ParentModule } from './parent/parent.module';
 import { FormsModule } from '@angular/forms';
 import { Branch1Module } from './branch1/branch1.module';
 import { Branch2Module } from './branch2/branch2.module';
+import { RandomBackgroundModule } from '../../libs/random-background/random-background.module';
 
 
 
@@ -22,7 +23,8 @@ import { Branch2Module } from './branch2/branch2.module';
     ParentModule,
     FormsModule,
     Branch1Module,
-    Branch2Module
+    Branch2Module,
+    RandomBackgroundModule
   ]
 })
 export class ChangeDetectionStrategiesModule { }

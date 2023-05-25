@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { trigger } from '@angular/animations';
+import { RandomBackgroundDirective } from '../../libs/random-background/random-background.directive';
 
 @Component({
   selector: 'app-change-detection-strategey',
@@ -10,9 +11,16 @@ import { trigger } from '@angular/animations';
 export class ChangeDetectionStrategiesComponent implements OnInit {
   food: any;
 
+  @ViewChild('appRandomBackground') appRandomBackground: RandomBackgroundDirective | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  triggerChangeDetection() {
+    this.appRandomBackground?.changeBackground()
+    return Math.random()*100;
   }
 
 }
