@@ -15,7 +15,7 @@ export class Parent2Component implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this._cdr.detectChanges();
-    } , 2000);
+    } , 4000);
   }
 
   triggerChangeDetection() {

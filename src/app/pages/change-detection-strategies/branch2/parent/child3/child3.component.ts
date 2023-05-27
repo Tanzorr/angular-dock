@@ -15,7 +15,7 @@ export class Child3Component implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this._cdr.markForCheck();
-    }, 5000);
+    }, 7000);
   }
 
   triggerChangeDetection() {

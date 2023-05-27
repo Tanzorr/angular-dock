@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-branch2',
@@ -6,18 +6,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./branch2.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Branch2Component implements OnInit {
+export class Branch2Component {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   triggerChangeDetection() {
     return Math.random()*100;
-  }
-
-  displayChanges() {
-
   }
 }
