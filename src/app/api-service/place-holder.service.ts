@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import 'reflect-metadata';
 
-
+@Reflect.metadata('key', 'value')
 @Injectable({
   providedIn: 'root'
 })

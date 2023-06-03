@@ -39,6 +39,10 @@ const navs = [
     path: '/event-loop',
     label: 'Event Loop'
   },
+  {
+    path: '/dependency-injection',
+    label: 'Dependency Injection'
+  }
 ]
 
 
@@ -63,13 +67,8 @@ export class AppComponent implements AfterViewInit {
   subject = new Subject<TemplateRef<any>>()
   @ViewChild('ref') ref: TemplateRef<any>
   columns: number = 1;
-  rows: number = 1;
-  rows1: number = 1;
-  columns1: number = 1;
-
 
   ngAfterViewInit(): void {
     this.subject.next(this.ref)
   }
-
 }

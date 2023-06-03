@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Branch1Module } from './branch1/branch1.module';
 import { Branch2Module } from './branch2/branch2.module';
 import { RandomBackgroundModule } from '../../libs/random-background/random-background.module';
+import { DependencyInjectionModule } from '../dependency-injection/dependency-injection.module';
 
 
 
@@ -24,7 +25,8 @@ import { RandomBackgroundModule } from '../../libs/random-background/random-back
     FormsModule,
     Branch1Module,
     Branch2Module,
-    RandomBackgroundModule
+    RandomBackgroundModule,
+    DependencyInjectionModule
   ]
 })
 export class ChangeDetectionStrategiesModule { }

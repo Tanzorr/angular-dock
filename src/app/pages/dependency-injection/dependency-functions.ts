@@ -1,42 +1,114 @@
-//Create register function
+import 'reflect-metadata'
 
-const REGISTER_MAP: Record<string, string> = {};
+export function run(){
+  const INJECTABLE_METADATA_KEY = Symbol('Injectable');
 
+  function Injectable() {
+    return function(target: Function){
+      Reflect.defineMetadata(INJECTABLE_METADATA_KEY, true, target);
+    }
+  }
 
-export function register(name: string, value: string) {
-  REGISTER_MAP[name] = value;
-};
+  const INJECT_METADATA_KEY = Symbol('Inject');
 
-//Create setup function
+  function Inject(token: any) {
+    return function(target: Function, propertyKey: string, parameterIndex: number) {
+      const existingParametersTokens: Array<any> = Reflect.getOwnMetadata(INJECT_METADATA_KEY, target) || [];
 
-export function setUp(classes: any[]) {
-  classes.forEach((ClassName) => {
-    new ClassName();
-  });
+      existingParametersTokens[parameterIndex] = token;
+
+      Reflect.defineMetadata(INJECT_METADATA_KEY, existingParametersTokens, target)
+    }
+  }
+
+  class Provider {
+    token: string;
+    dependency: Function;
+
+    constructor(value: {
+      provide: string
+      useClass: Function
+    }) {
+      this.token = value.provide;
+      this.dependency = value.useClass;
+    }
+  }
+
+  @Injectable()
+  class GreeterService {
+    sayHello(): void {
+      console.log('Hello!');
+    }
+  }
+
+  @Injectable()
+  class MockGreeterService {
+    sayHello(): void {
+      console.log('Hola!');
+    }
+  }
+
+  let uniqId = 0;
+
+  @Injectable()
+  class MyService {
+    id: number;
+
+    constructor(@Inject('GreeterService') private _greeterService: GreeterService) {
+      this.id = uniqId++;
+    }
+
+    init(): void {
+      this._greeterService.sayHello();
+    }
+  }
+
+  const PROVIDERS = [
+    new Provider({
+      provide: 'GreeterService',
+      useClass: MockGreeterService
+    })
+  ];
+  const PROVIDERS_MAP = PROVIDERS.reduce((map: Map<string, Function>, provider: Provider) => {
+    map.set(provider.token, provider.dependency);
+
+    return map;
+  }, new Map());
+
+  class Injector {
+    private _instances = new Map();
+
+    get<T>(target: Function | undefined): T {
+      // @ts-ignore
+      const isInjectable = Reflect.getMetadata(INJECTABLE_METADATA_KEY, target);
+
+      if (!isInjectable) {
+        // @ts-ignore
+        throw new Error(`${target.name} is not injectable`);
+      }
+
+      if (this._instances.get(target)) {
+        return this._instances.get(target);
+      }
+
+      // @ts-ignore
+      const parameters = Reflect.getMetadata(INJECT_METADATA_KEY, target);
+      const dependencies = parameters
+        ? parameters.map((token: string) => this.get(PROVIDERS_MAP.get(token)))
+        : [];
+      // @ts-ignore
+      const instance = new target(...dependencies);
+
+      this._instances.set(target, instance);
+
+      return instance;
+    }
+  }
+
+  const injector = new Injector();
+  const myService = injector.get(MyService);
+
+// @ts-ignore
+  myService.init();
 }
 
-//Create execute function
-
-export function execute(className: string)   {
-
-  const constructorArguments = getConstructorArgumentsArray(className);
-  const constructorArgumentsInstances = constructorArguments.map((argument: any) => {
-    return REGISTER_MAP[argument.name];
-
-  });
-
-  // check if constructor arguments are registered
-  // check if constructor arguments have registered arguments
-  //if no, create instance of class
-  // if yes ask this function to create instance of class
-
-}
-
-// get constructor arguments from class
-export function getConstructorArgumentsArray(className: string) {
-  // @ts-ignore
-  const classInstance = new className();
-  // @ts-ignore
-  const constructorArguments = Reflect.getMetadata('design:paramtypes', classInstance.constructor);
-  return constructorArguments;
-}

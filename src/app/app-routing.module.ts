@@ -35,6 +35,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/change-detection-strategies/change-detection-strategies.module').then(m => m.ChangeDetectionStrategiesModule)
       },
       {
+        path: 'dependency-injection',
+        loadChildren: () => import('./pages/dependency-injection/dependency-injection.module').then(m => m.DependencyInjectionModule)
+      },
+      {
         path: '',
         redirectTo: 'attribute-directives',
         pathMatch: 'full'
