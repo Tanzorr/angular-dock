@@ -1,39 +1,10 @@
 import 'reflect-metadata'
+import { INJECT_METADATA_KEY, INJECTABLE_METADATA_KEY } from './dependecy-libs/dependency-inject.model';
+import { Provider } from './dependecy-libs/provider';
+import { Injectable, Inject } from './dependecy-libs/inject-function';
+
 
 export function run(){
-  const INJECTABLE_METADATA_KEY = Symbol('Injectable');
-
-  function Injectable() {
-    return function(target: Function){
-      Reflect.defineMetadata(INJECTABLE_METADATA_KEY, true, target);
-    }
-  }
-
-  const INJECT_METADATA_KEY = Symbol('Inject');
-
-  function Inject(token: any) {
-    return function(target: Function, propertyKey: string, parameterIndex: number) {
-      const existingParametersTokens: Array<any> = Reflect.getOwnMetadata(INJECT_METADATA_KEY, target) || [];
-
-      existingParametersTokens[parameterIndex] = token;
-
-      Reflect.defineMetadata(INJECT_METADATA_KEY, existingParametersTokens, target)
-    }
-  }
-
-  class Provider {
-    token: string;
-    dependency: Function;
-
-    constructor(value: {
-      provide: string
-      useClass: Function
-    }) {
-      this.token = value.provide;
-      this.dependency = value.useClass;
-    }
-  }
-
   @Injectable()
   class GreeterService {
     sayHello(): void {
