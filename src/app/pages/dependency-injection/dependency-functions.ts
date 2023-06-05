@@ -1,7 +1,6 @@
 import 'reflect-metadata'
-import { INJECT_METADATA_KEY, INJECTABLE_METADATA_KEY } from './dependecy-libs/dependency-inject.model';
-import { Provider } from './dependecy-libs/provider';
-import { Injectable, Inject } from './dependecy-libs/inject-function';
+import { Injectable, Inject, addToProviders } from './dependecy-libs/inject-function';
+import { Injector } from './dependecy-libs/injector';
 
 
 export function run(){
@@ -34,47 +33,9 @@ export function run(){
     }
   }
 
-  const PROVIDERS = [
-    new Provider({
-      provide: 'GreeterService',
-      useClass: MockGreeterService
-    })
-  ];
-  const PROVIDERS_MAP = PROVIDERS.reduce((map: Map<string, Function>, provider: Provider) => {
-    map.set(provider.token, provider.dependency);
+addToProviders('GreeterService', MockGreeterService)
 
-    return map;
-  }, new Map());
 
-  class Injector {
-    private _instances = new Map();
-
-    get<T>(target: Function | undefined): T {
-      // @ts-ignore
-      const isInjectable = Reflect.getMetadata(INJECTABLE_METADATA_KEY, target);
-
-      if (!isInjectable) {
-        // @ts-ignore
-        throw new Error(`${target.name} is not injectable`);
-      }
-
-      if (this._instances.get(target)) {
-        return this._instances.get(target);
-      }
-
-      // @ts-ignore
-      const parameters = Reflect.getMetadata(INJECT_METADATA_KEY, target);
-      const dependencies = parameters
-        ? parameters.map((token: string) => this.get(PROVIDERS_MAP.get(token)))
-        : [];
-      // @ts-ignore
-      const instance = new target(...dependencies);
-
-      this._instances.set(target, instance);
-
-      return instance;
-    }
-  }
 
   const injector = new Injector();
   const myService = injector.get(MyService);
