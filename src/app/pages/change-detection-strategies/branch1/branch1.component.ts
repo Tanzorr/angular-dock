@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-branch1',
@@ -8,6 +8,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class Branch1Component {
 
   triggerChangeDetection() {
-    return Math.random()*100;
+    return Math.random() * 100;
   }
 }

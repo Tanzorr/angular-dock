@@ -10,8 +10,6 @@ export const PROVIDERS_MAP:Map<string, Function> = PROVIDERS.reduce((map: Map<st
   return map;
 }, new Map());
 
-//export let PROVIDERS_MAP:Map<string, Function>
-
 export class Injector {
   private _instances = new Map();
 
@@ -31,8 +29,6 @@ export class Injector {
 
     // @ts-ignore
     const parameters = Reflect?.getMetadata(INJECT_METADATA_KEY, target);
-
-    console.log('parameters',parameters, PROVIDERS_MAP)
     const dependencies = parameters
       ? parameters.map((token: string) => this.get(PROVIDERS_MAP.get(token)))
       : [];

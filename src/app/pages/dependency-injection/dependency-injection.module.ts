@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DependencyInjectionComponent } from './dependency-injection.component';
-import { InjectRoutingModule } from './injection-routing.module';
-
+import {DependencyInjectionRoutingModule} from "./dependency-injection-routing.module";
 
 
 @NgModule({
@@ -10,7 +9,8 @@ import { InjectRoutingModule } from './injection-routing.module';
     DependencyInjectionComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DependencyInjectionRoutingModule
   ],
   exports: [
     DependencyInjectionComponent
