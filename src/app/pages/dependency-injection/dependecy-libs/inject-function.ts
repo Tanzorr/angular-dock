@@ -14,27 +14,19 @@ export function Inject(token: any) {
     const existingParametersTokens: Array<any> = Reflect.getOwnMetadata(INJECT_METADATA_KEY, target) || [];
 
     existingParametersTokens[parameterIndex] = token;
-
     Reflect.defineMetadata(INJECT_METADATA_KEY, existingParametersTokens, target)
   }
 }
 
-export function MyModule(imports: any[], providers: any[]) {
-     providers.forEach((provider: any) => {
-        addToProviders(provider.toString(), provider)
-      })
-
-      imports.forEach((importedModule: any) => {
-        const injector = new Injector();
-        const importedModuleInstance = injector.get(importedModule);
-      })
-}
-
 export function addToProviders(provide: string, useClass: Function) {
-  PROVIDERS.push(new Provider({provide, useClass})),
-  setProvidersMap(PROVIDERS)
+  PROVIDERS.push(new Provider({provide, useClass}));
+  setProvidersMap(PROVIDERS);
 }
 
 export function setProvidersMap(providers: Provider[]) {
   PROVIDERS_MAP.set(providers[0].token, providers[0].dependency);
+}
+
+export function injectService(service: Function) {
+  return new Injector().get(service);
 }

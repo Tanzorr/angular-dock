@@ -1,1 +1,8 @@
-<p>dependency-injection works!</p>
+<h1>dependency-injection works!</h1>
+
+<input type="number" #input >
+<button class="btn btn-success" (click)="getUserById(input.value)" >Get User By Id</button>
+<ng-container *ngFor="let user of users">
+  <li>{{ user.name }}</li>
+</ng-container>
+

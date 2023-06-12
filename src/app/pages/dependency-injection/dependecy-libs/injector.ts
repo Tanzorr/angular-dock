@@ -26,7 +26,6 @@ export class Injector {
     if (this._instances.get(target)) {
       return this._instances.get(target);
     }
-
     // @ts-ignore
     const parameters = Reflect?.getMetadata(INJECT_METADATA_KEY, target);
     const dependencies = parameters

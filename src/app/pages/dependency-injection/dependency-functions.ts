@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Injectable, Inject, addToProviders, MyModule } from './dependecy-libs/inject-function';
+import { Injectable, Inject, addToProviders } from './dependecy-libs/inject-function';
 import { Injector } from './dependecy-libs/injector';
 
 
@@ -37,8 +37,7 @@ export function run() {
   addToProviders('GreeterService', MockGreeterService)
 
   const injector = new Injector();
-  const myService = injector.get(MyService);
-// @ts-ignore
+  const myService = injector.get<MyService>(MyService);
   myService.init();
 }
 

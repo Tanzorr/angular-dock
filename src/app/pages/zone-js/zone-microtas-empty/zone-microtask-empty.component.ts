@@ -47,6 +47,3 @@ export class ZoneMicrotaskEmptyComponent {
     });
   }
 }
-
-// TODO Show difference between onMicrotaskEmpty and onStable with visualization
-// underused eventLoop with visualization
