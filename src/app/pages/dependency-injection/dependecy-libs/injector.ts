@@ -13,8 +13,12 @@ export const PROVIDERS_MAP:Map<string, Function> = PROVIDERS.reduce((map: Map<st
 export class Injector {
   private _instances = new Map();
 
-  get<T>(target: Function | undefined): T {
-    // @ts-ignore
+  get<T>(target: any): T {
+
+    if (!target) {
+      throw new Error('Invalid dependency injection target');
+    }
+    console.log('target: ', target);
     const isInjectable = Reflect?.getMetadata(INJECTABLE_METADATA_KEY, target);
 
     if (!isInjectable) {
@@ -29,8 +33,11 @@ export class Injector {
     // @ts-ignore
     const parameters = Reflect?.getMetadata(INJECT_METADATA_KEY, target);
     const dependencies = parameters
-      ? parameters.map((token: string) => this.get(PROVIDERS_MAP.get(token)))
+      ? parameters.map((token: string) => {
+        return this.get(PROVIDERS_MAP.get(token))
+      })
       : [];
+
     // @ts-ignore
     const instance = new target(...dependencies);
 

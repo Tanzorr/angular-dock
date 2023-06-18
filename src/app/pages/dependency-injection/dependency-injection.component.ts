@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import 'reflect-metadata';
-import {addToProviders, Inject, Injectable} from "./dependecy-libs/inject-function";
-import {UserService} from "./services/user.service";
-import {CashUserService} from "./services/cash-user-service";
-import {Injector} from "./dependecy-libs/injector";
+import { addToProviders, Inject, Injectable } from "./dependecy-libs/inject-function";
+import { UserService } from "./services/user.service";
+import { CashUserService } from "./services/cash-user-service";
+import { Injector } from "./dependecy-libs/injector";
+import {appModule} from "./module/module";
 
 
 @Injectable()
@@ -42,8 +43,6 @@ class UserManager {
   async getUser(id: number): Promise<any> {
     let user = this._cashUserService.get(id);
 
-    console.log('user: ', user);
-
     if (!user) {
       user = await this._userService.getById(id);
       this._cashUserService.set(id, user);
@@ -55,7 +54,7 @@ class UserManager {
 @Component({
   selector: 'app-dependency-injection',
   templateUrl: './dependency-injection.component.html',
-  styleUrls: ['./dependency-injection.component.scss'],
+  styleUrls: [ './dependency-injection.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DependencyInjectionComponent implements OnInit {
@@ -65,8 +64,7 @@ export class DependencyInjectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const myClass = new MyClass(new Dependency1(), new Dependency2());
-    myClass.myMethod();
+    appModule
   }
 
   getUserById(id: string): void {
@@ -74,25 +72,16 @@ export class DependencyInjectionComponent implements OnInit {
       return;
     }
 
-
-
     const injector = new Injector();
 
     addToProviders('UserService', UserService);
     addToProviders('CashUserService', CashUserService);
+    addToProviders('UserManager', UserManager);
 
-    const userManager = new UserManager(new UserService(), new CashUserService());
+    const userManager = injector.get<UserManager>(UserManager);
 
     userManager.getUser(+id).then((user) => {
       this.users.push(user);
     });
-
-
-
-   // const userManager = injector.get<UserManager>(UserManager);
-    //
-    // userManager.getUser(+id).then((user) => {
-    //   this.users.push(user);
-    // });
   }
 }

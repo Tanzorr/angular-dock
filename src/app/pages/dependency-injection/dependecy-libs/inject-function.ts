@@ -24,7 +24,9 @@ export function addToProviders(provide: string, useClass: Function) {
 }
 
 export function setProvidersMap(providers: Provider[]) {
-  PROVIDERS_MAP.set(providers[0].token, providers[0].dependency);
+  providers.forEach((provider: Provider, index) => {
+    PROVIDERS_MAP.set(provider.token, provider.dependency);
+  });
 }
 
 export function injectService(service: Function) {
