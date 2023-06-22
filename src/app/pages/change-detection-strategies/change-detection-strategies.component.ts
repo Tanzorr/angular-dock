@@ -22,5 +22,4 @@ export class ChangeDetectionStrategiesComponent implements OnInit {
     this.appRandomBackground?.changeBackground()
     return Math.random()*100;
   }
-
 }

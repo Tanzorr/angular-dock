@@ -4,7 +4,9 @@ import { addToProviders, Inject, Injectable } from "./dependecy-libs/inject-func
 import { UserService } from "./services/user.service";
 import { CashUserService } from "./services/cash-user-service";
 import { Injector } from "./dependecy-libs/injector";
-import {appModule} from "./module/module";
+import { MyModule } from "./module/my.module";
+import { MyComponentModule } from "./my-component-module/my-component.module";
+
 
 
 @Injectable()
@@ -64,7 +66,7 @@ export class DependencyInjectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    appModule
+    new MyComponentModule();
   }
 
   getUserById(id: string): void {
