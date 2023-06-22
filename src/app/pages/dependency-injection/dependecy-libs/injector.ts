@@ -18,7 +18,6 @@ export class Injector {
     if (!target) {
       throw new Error('Invalid dependency injection target');
     }
-    console.log('target: ', target);
     const isInjectable = Reflect?.getMetadata(INJECTABLE_METADATA_KEY, target);
 
     if (!isInjectable) {

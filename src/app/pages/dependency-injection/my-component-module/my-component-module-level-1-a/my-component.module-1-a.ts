@@ -2,6 +2,7 @@ import { MyModule } from "../../module/my.module";
 import { MyComponentClass1A } from "./my-component-class-1-a";
 import { ServiceForModuleF } from "../../services/service-for-module-f";
 
+// @ts-ignore
 @MyModule(
   [MyComponentClass1A],
   [],

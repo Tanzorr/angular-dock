@@ -6,6 +6,7 @@ import { CashUserService } from "./services/cash-user-service";
 import { Injector } from "./dependecy-libs/injector";
 import { MyModule } from "./module/my.module";
 import { MyComponentModule } from "./my-component-module/my-component.module";
+import { MyModuleClass } from "./my-component-module/my-component-class";
 
 
 
@@ -66,7 +67,9 @@ export class DependencyInjectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    new MyComponentModule();
+
+    const myModule = new MyComponentModule();
+    console.log({myModule });
   }
 
   getUserById(id: string): void {

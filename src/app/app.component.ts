@@ -24,10 +24,6 @@ const navs = [
     label: 'Structure Directive'
   },
   {
-    path: '/ng-content',
-    label: 'NgContent'
-  },
-  {
     path: '/change-detection-strategies',
     label: 'Change Detection Strategies'
   },
@@ -53,20 +49,10 @@ const navs = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements AfterViewInit {
-  condition = false;
-  title = 'NgContent';
-  numbers = [ 1, 2, 3 ];
-  nestedArray = [
-    [ 1, 2, 3 ],
-    [ 4, 5, 6 ],
-    [ 7, 8, 9 ]
-  ];
-  greeting = 'Hello, world!';
   navs: navItem[] = navs;
 
   subject = new Subject<TemplateRef<any>>()
-  @ViewChild('ref') ref: TemplateRef<any>
-  columns: number = 1;
+  @ViewChild('ref') ref: TemplateRef<any>;
 
   ngAfterViewInit(): void {
     this.subject.next(this.ref)
